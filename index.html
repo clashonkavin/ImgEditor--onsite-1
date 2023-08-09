@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>ProEditor</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1>ProEditor</h1>
+            <div id="controls">
+                <h2>Image Controls</h2>
+                <span class="range-field">
+                    <label for="brightnessSlider">Brightness</label>
+                    <input id="brightnessSlider"
+                        type="range" value="100"
+                        min="0" max="100"
+                        onchange=applyFilter()>
+                </span>
+                <span class="range-field">
+                    <label for="contrastSlider">Contrast</label>
+                    <input id="contrastSlider"
+                        type="range" value="100"
+                        min="0" max="200"
+                        onchange=applyFilter()>
+                </span>
+                <span class="range-field">
+                    <label for="grayscaleSlider">Grayscale</label>
+                    <input id="grayscaleSlider"
+                        type="range" value="0"
+                        min="0" max="100"
+                        onchange=applyFilter()>
+                </span>
+                <span class="range-field">
+                    <label for="saturationSlider">Saturation</label>
+                    <input id="saturationSlider"
+                        type="range" value="100"
+                        min="0" max="300"
+                        onchange=applyFilter()>
+                </span>
+                <div style="margin-top: 20px;">
+                    <button onclick=cropImage()>Crop</button>
+                    <div style="display: flex;margin-top: 10px;width: 100%;">
+                        <button style="margin-right: 10px;" onclick=resetImage()>Reset</button>
+                        <button onclick=saveImage()>Download</button>
+                    </div>
+                </div>
+            </div>
+            <div id="input" style="margin: auto auto;">
+                <input type="file" id="image-upload" onchange=uploadImage(event) accept="image/*">
+                <input type="url" id="image-url" onchange=uploadImage(event) placeholder="Enter image URL">
+            </div>
+        </div>
+        <div class="workspace" id="workspace">
+            <img id="sourceImage" crossorigin="anonymous">
+            <canvas id="canvas" height="0"></canvas>
+            <div class="file-controls">
+                <a id="link"></a>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
